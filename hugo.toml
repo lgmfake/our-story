@@ -1,0 +1,59 @@
+# =============================================
+# 站点基础配置
+# =============================================
+title = "我们的故事"
+baseURL = "https://example.com/"
+theme = "FixIt"
+
+# 语言与中文支持
+defaultContentLanguage = "zh-cn"
+locale = "zh-CN"
+label = "简体中文"
+hasCJKLanguage = true
+
+# 时区
+timeZone = "Asia/Shanghai"
+
+# 基础功能
+enableRobotsTXT = true
+enableEmoji = true
+
+[frontmatter]
+lastmod = ["lastmod", ":git", ":fileModTime", ":default"]
+
+# =============================================
+# 主题参数
+# =============================================
+[params]
+description = "记录我们的每一天"
+keywords = ["love", "blog", "我们的故事"]
+defaultTheme = "auto"
+dateFormat = "2006-01-02"
+
+# 作者信息
+[params.author]
+name = "你的名字"
+email = ""
+link = ""
+avatar = ""
+
+# 顶部标题
+[params.header]
+[params.header.title]
+name = "我们的故事"
+typeit = true
+
+# 页脚
+[params.footer]
+enable = true
+copyright = true
+author = true
+since = "2026"
+
+# 首页个人卡片
+[params.home.profile]
+enable = true
+title = "我们的故事"
+subtitle = "记录和你在一起的每一天"
+typeit = true
+social = true
