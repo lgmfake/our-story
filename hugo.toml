@@ -2,7 +2,7 @@
 # 站点基础配置
 # =============================================
 title = "我们的故事"
-baseURL = "https://example.com/"
+baseURL = "https://cxxlgm.com/"
 theme = "FixIt"
 
 # 语言与中文支持
@@ -32,7 +32,7 @@ dateFormat = "2006-01-02"
 
 # 作者信息
 [params.author]
-name = "你的名字"
+name = "光猫"
 email = ""
 link = ""
 avatar = ""
