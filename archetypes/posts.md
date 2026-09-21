@@ -5,7 +5,7 @@ date: {{ .Date }}
 lastmod: {{ .Date }}
 draft: true
 author:
-  name: "光猫"
+  name: "猫猫"
 description: ""
 keywords: []
 comment: true
