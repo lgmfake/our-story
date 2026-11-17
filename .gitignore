@@ -1,5 +1,7 @@
 # Hugo 构建产物（每次构建自动生成，无需上传）
 /public/
+/public2/
+/_site_build*/
 /resources/
 .hugo_build.lock
 

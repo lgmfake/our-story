@@ -8,27 +8,79 @@ theme = "FixIt"
 # 语言与中文支持
 defaultContentLanguage = "zh-cn"
 locale = "zh-CN"
-label = "简体中文"
 hasCJKLanguage = true
 
 # 时区
 timeZone = "Asia/Shanghai"
 
-# 基础功能
-enableRobotsTXT = true
+# 基础功能（本地暂时禁用 robots.txt 绕过文件锁定问题，Vercel 不受影响）
+enableRobotsTXT = false
 enableEmoji = true
+enableGitInfo = true
 
 [frontmatter]
 lastmod = ["lastmod", ":git", ":fileModTime", ":default"]
 
 # =============================================
+# 菜单配置
+# =============================================
+[[menus.main]]
+identifier = "home"
+name = "首页"
+url = "/"
+weight = 1
+[menus.main.params]
+icon = "fa-solid fa-house"
+
+[[menus.main]]
+identifier = "archives"
+name = "归档"
+url = "/archives/"
+weight = 2
+[menus.main.params]
+icon = "fa-solid fa-archive"
+
+[[menus.main]]
+identifier = "categories"
+name = "分类"
+url = "/categories/"
+weight = 3
+[menus.main.params]
+icon = "fa-solid fa-folder-tree"
+
+[[menus.main]]
+identifier = "tags"
+name = "标签"
+url = "/tags/"
+weight = 4
+[menus.main.params]
+icon = "fa-solid fa-tags"
+
+[[menus.main]]
+identifier = "about"
+name = "关于我们"
+url = "/about/"
+weight = 5
+[menus.main.params]
+icon = "fa-solid fa-heart"
+
+# =============================================
 # 主题参数
 # =============================================
 [params]
-description = "记录我们的每一天"
-keywords = ["love", "blog", "我们的故事"]
+description = "记录我们的每一天 —— 一对情侣的爱情博客"
+keywords = ["我们的故事", "情侣博客", "爱情", "日常", "cxxlgm"]
 defaultTheme = "auto"
 dateFormat = "2006-01-02"
+# SEO 默认图片
+images = []
+# 启用 PWA
+enablePWA = true
+# 合并站点标题到页面标题
+withSiteTitle = true
+titleDelimiter = "-"
+# 禁用主题注入 meta（可选）
+disableThemeInject = false
 
 # 作者信息
 [params.author]
@@ -37,23 +89,261 @@ email = ""
 link = ""
 avatar = ""
 
-# 顶部标题
+# Git 信息（用于 lastmod）
+[params.gitInfo]
+repo = "https://github.com/lgmfake/our-story"
+branch = "main"
+dir = "content"
+
+# =============================================
+# Header 配置
+# =============================================
 [params.header]
+desktopMode = "sticky"
+mobileMode = "auto"
+
 [params.header.title]
+logo = ""
 name = "我们的故事"
 typeit = true
 
-# 页脚
+[params.header.subtitle]
+name = "记录和你在一起的每一天"
+typeit = true
+
+# 面包屑
+[params.breadcrumb]
+enable = true
+sticky = false
+showHome = true
+separator = "/"
+capitalize = true
+
+# =============================================
+# Footer 配置
+# =============================================
 [params.footer]
 enable = true
 copyright = true
 author = true
 since = "2026"
+license = '<a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>'
 
-# 首页个人卡片
+[params.footer.powered]
+enable = true
+hugoLogo = true
+themeLogo = true
+
+# 站点运行时间
+[params.footer.siteTime]
+enable = true
+animate = true
+icon = "fa-solid fa-heartbeat"
+pre = "在一起已经"
+value = "2026-01-01T00:00:00+08:00"
+
+# =============================================
+# 首页配置
+# =============================================
 [params.home.profile]
 enable = true
 title = "我们的故事"
 subtitle = "记录和你在一起的每一天"
 typeit = true
 social = true
+disclaimer = "这里只属于我们两个人 ❤"
+
+[params.home.posts]
+enable = true
+paginate = 6
+
+# =============================================
+# 搜索配置（Fuse.js 本地搜索）
+# =============================================
+[params.search]
+enable = true
+type = "fuse"
+contentLength = 4000
+placeholder = "搜索文章标题或内容..."
+maxResultLength = 10
+snippetLength = 30
+
+# =============================================
+# 社交链接
+# =============================================
+[params.social]
+GitHub = "lgmfake"
+RSS = true
+
+# =============================================
+# 阅读体验
+# =============================================
+# 回顶按钮
+[params.backToTop]
+enable = true
+scrollpercent = true
+
+# 阅读进度条
+[params.readingProgress]
+enable = true
+start = "left"
+position = "top"
+reversed = false
+height = "2px"
+
+# Pace 加载进度条
+[params.pace]
+enable = true
+color = "pink"
+theme = "minimal"
+
+# 页面配置
+[params.page]
+pageStyle = "normal"
+wordCount = true
+readingTime = true
+showLastmod = true
+autoBookmark = true
+instantPage = true
+lightgallery = true
+
+# TOC 目录
+[params.page.toc]
+enable = true
+auto = true
+position = "right"
+ordered = false
+startLevel = 2
+endLevel = 6
+
+# 代码块
+[params.codeblock]
+wrapper = true
+mode = "classic"
+copyable = true
+
+# 页面底部分享
+[params.page.share]
+enable = true
+Twitter = true
+Facebook = true
+Weibo = true
+
+# =============================================
+# 评论系统（Giscus - 基于 GitHub Discussions）
+# =============================================
+[params.page.comment]
+enable = true
+
+[params.page.comment.giscus]
+enable = true
+repo = "lgmfake/our-story"
+repoId = ""
+category = "General"
+categoryId = ""
+mapping = "pathname"
+strict = "0"
+term = "pathname"
+reactionsEnabled = "1"
+emitMetadata = "0"
+inputPosition = "bottom"
+lang = "zh-CN"
+lightTheme = "light"
+darkTheme = "dark"
+lazyLoad = true
+
+# =============================================
+# 访客统计（不蒜子 / Vercount）
+# =============================================
+[params.busuanzi]
+enable = true
+source = "https://vercount.one/js"
+siteViews = true
+pageViews = true
+
+# =============================================
+# RSS / Feed
+# =============================================
+[params.feed]
+limit = 10
+fullText = true
+
+# =============================================
+# SEO 配置
+# =============================================
+[params.seo]
+image = ""
+
+[params.image]
+optimise = true
+cacheRemote = true
+
+# =============================================
+# 归档 & 列表页
+# =============================================
+[params.archives]
+paginate = 20
+dateFormat = "01-02"
+
+[params.section]
+paginate = 20
+dateFormat = "01-02"
+
+[params.list]
+paginate = 20
+dateFormat = "01-02"
+
+# Tag 云
+[params.tagcloud]
+enable = true
+min = 14
+max = 28
+orderby = "name"
+
+# 相关文章
+[params.page.related]
+enable = true
+count = 5
+position = ["aside", "footer"]
+
+# =============================================
+# Markdown 扩展
+# =============================================
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.goldmark.extensions]
+definitionList = true
+footnote = true
+table = true
+taskList = true
+typographer = true
+strikethrough = false
+
+[markup.highlight]
+codeFences = true
+noClasses = false
+lineNos = true
+lineNumbersInTable = true
+guessSyntax = true
+anchorLineNos = false
+
+# =============================================
+# PWA manifest 可配置
+# =============================================
+[params.app]
+title = "我们的故事"
+noFavicon = false
+iconColor = "#ff6b81"
+tileColor = "#ff6b81"
+
+[params.app.themeColor]
+light = "#fff5f5"
+dark = "#252627"
+
+# =============================================
+# Sitemap
+# =============================================
+[sitemap]
+changefreq = "weekly"
+priority = 0.5

@@ -1,5 +1,5 @@
 ---
-title: "{{ replace .File.ContentBaseName "-" " " | title }}"
+title: "{{ replace .File.ContentBaseName "-" " " }}"
 subtitle: ""
 date: {{ .Date }}
 lastmod: {{ .Date }}
