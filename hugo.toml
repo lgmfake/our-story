@@ -238,9 +238,9 @@ enable = true
 [params.page.comment.giscus]
 enable = true
 repo = "lgmfake/our-story"
-repoId = ""
+repoId = "1374261097"
 category = "General"
-categoryId = ""
+categoryId = "DIC_kwDOUemPac4DLUdb"
 mapping = "pathname"
 strict = "0"
 term = "pathname"
