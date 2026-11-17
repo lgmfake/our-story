@@ -230,27 +230,35 @@ Facebook = true
 Weibo = true
 
 # =============================================
-# 评论系统（Giscus - 基于 GitHub Discussions）
+# 评论系统（Waline - 基于 Vercel + Neon）
+# serverURL 填入 Waline 后端部署地址，如 https://our-story-waline.vercel.app
 # =============================================
 [params.page.comment]
 enable = true
 
 [params.page.comment.giscus]
+enable = false
+
+[params.page.comment.waline]
 enable = true
-repo = "lgmfake/our-story"
-repoId = "1374261097"
-category = "General"
-categoryId = "DIC_kwDOUemPac4DLUdb"
-mapping = "pathname"
-strict = "0"
-term = "pathname"
-reactionsEnabled = "1"
-emitMetadata = "0"
-inputPosition = "bottom"
-lang = "zh-CN"
-lightTheme = "light"
-darkTheme = "dark"
-lazyLoad = true
+serverURL = "https://our-story-waline.vercel.app"
+pageview = true
+emoji = [ "//unpkg.com/@waline/emojis@1.1.0/weibo" ]
+meta = [
+  "nick",
+  "mail",
+  "link"
+]
+requiredMeta = []
+login = "enable"
+wordLimit = 0
+pageSize = 10
+imageUploader = true
+highlighter = false
+comment = false
+texRenderer = false
+search = false
+reaction = true
 
 # =============================================
 # 访客统计（不蒜子 / Vercount）
