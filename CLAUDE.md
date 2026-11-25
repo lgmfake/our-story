@@ -102,6 +102,7 @@ categories: []
 | 改站点标题/副标题 | 改 `hugo.toml` 的 `title` / `[params.home.profile]` |
 | 写新文章 | 用第 5 节流程 |
 | 删文章 | 删除 `content/posts/<对应文件夹>`，然后 push |
+| 在线写/改文章（不用 GitHub） | 打开 `https://www.cxxlgm.com/admin/`，输入后台密码 |
 | 本地预览 | `hugo server -D`，浏览器打开 http://localhost:1313 |
 | 本地构建 | `hugo --gc --minify` |
 | 用模板生成新文章 | `hugo new posts/<文件名>.md` |
@@ -150,3 +151,30 @@ categories: []
 3. 跑一次 `cd /d/blog/myloverblog && hugo --gc --minify` 确认能构建
 4. 看 git 状态：`git status` 和 `git log --oneline -5`
 5. 要发文章时：读桌面 `写文章模板.txt`，或直接问用户要内容
+
+---
+
+## 10. 在线编辑后台（/admin）
+
+给两个人共用，**不需要 GitHub 账号**，只需一个共享密码。
+
+| 内容 | 位置 |
+|------|------|
+| 后台页面 | `https://www.cxxlgm.com/admin/`（已加 noindex） |
+| 前端 | `static/admin/index.html`（单文件，直接编辑 Markdown 原文） |
+| 后端 | `api/admin.js`（Vercel Serverless Function，根目录 `api/` 会被自动识别） |
+
+保存流程：后台调 GitHub API 提交到 `lgmfake/our-story` 的 `main` → Vercel 自动重建上线（约 1 分钟）。
+
+**Vercel 环境变量**（项目 Settings → Environment Variables，Production 和 Preview 都要配）：
+
+| 变量 | 说明 |
+|------|------|
+| `ADMIN_PASSWORD` | 后台登录密码（自己定，建议 12 位以上） |
+| `ADMIN_SECRET` | 会话签名密钥，随机长字符串（如 `openssl rand -hex 32`） |
+| `GITHUB_TOKEN` | 对仓库有 Contents 读写权限的 Token（Fine-grained PAT） |
+
+**安全设计**：密码错误 5 次锁定 5 分钟；会话 Cookie HttpOnly + HMAC 签名，7 天过期；
+接口只允许读写 `content/` 下的 `.md`；Token 只存在服务端，不会下发到浏览器。
+改密码只需改 `ADMIN_PASSWORD` 后重新部署。
+
