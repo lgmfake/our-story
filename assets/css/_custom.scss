@@ -1,0 +1,41 @@
+// ==============================
+// Custom style
+// 站点自定义样式（在主题样式之后加载，用于覆盖默认值）
+// ==============================
+
+// 选中文字的主题色
+::selection {
+  background-color: rgba(255, 107, 129, 0.25);
+}
+
+// 正文图片：圆角 + 柔和阴影
+.post-content img {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+// 正文链接 hover 使用品牌粉色
+.post-content a:hover {
+  color: #ff6b81;
+}
+
+// 首页头像柔和光晕
+.home-profile .home-avatar img,
+.home .home-profile img {
+  box-shadow: 0 4px 20px rgba(255, 107, 129, 0.3);
+}
+
+// 浏览器滚动条（Webkit）
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 107, 129, 0.45);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 107, 129, 0.7);
+}

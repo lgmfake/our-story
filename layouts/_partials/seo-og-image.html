@@ -1,0 +1,8 @@
+{{- /* 社交分享图（Open Graph / Twitter Card），默认使用站点 SEO 分享图 */ -}}
+{{- with .Site.Params.seo.image -}}
+  <meta property="og:image" content="{{ . | absURL }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="675">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ . | absURL }}">
+{{- end }}

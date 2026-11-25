@@ -2,6 +2,7 @@
 /public/
 /public2/
 /_site_build*/
+/_final_build/
 /resources/
 .hugo_build.lock
 

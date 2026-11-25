@@ -13,8 +13,8 @@ hasCJKLanguage = true
 # 时区
 timeZone = "Asia/Shanghai"
 
-# 基础功能（本地暂时禁用 robots.txt 绕过文件锁定问题，Vercel 不受影响）
-enableRobotsTXT = false
+# 基础功能（robots.txt 由主题模板生成，含 Sitemap 声明）
+enableRobotsTXT = true
 enableEmoji = true
 enableGitInfo = true
 
@@ -72,8 +72,7 @@ description = "记录我们的每一天 —— 一对情侣的爱情博客"
 keywords = ["我们的故事", "情侣博客", "爱情", "日常", "cxxlgm"]
 defaultTheme = "auto"
 dateFormat = "2006-01-02"
-# SEO 默认图片
-images = []
+# SEO 分享图在 [params.seo] 中配置
 # 启用 PWA
 enablePWA = true
 # 合并站点标题到页面标题
@@ -87,7 +86,7 @@ disableThemeInject = false
 name = "猫猫"
 email = ""
 link = ""
-avatar = ""
+avatar = "/images/avatar.jpg"
 
 # Git 信息（用于 lastmod）
 [params.gitInfo]
@@ -147,6 +146,7 @@ value = "2026-01-01T00:00:00+08:00"
 # =============================================
 [params.home.profile]
 enable = true
+avatarURL = "/images/avatar.jpg"
 title = "我们的故事"
 subtitle = "记录和你在一起的每一天"
 typeit = true
@@ -206,6 +206,12 @@ showLastmod = true
 autoBookmark = true
 instantPage = true
 lightgallery = true
+# 文章底部快捷链接
+linkToMarkdown = true
+linkToEdit = true
+linkToSource = false
+linkToReport = false
+linkToVscode = false
 
 # TOC 目录
 [params.page.toc]
@@ -275,7 +281,24 @@ fullText = true
 # SEO 配置
 # =============================================
 [params.seo]
-image = ""
+# 默认分享图（Open Graph / Twitter Card / 结构化数据）
+image = "/images/og-cover.jpg"
+thumbnailUrl = "/images/og-cover.jpg"
+
+# 自定义 head 片段（生成 og:image / twitter:image）
+[params.customPartials]
+head = ["seo-og-image"]
+
+[params.page.seo]
+images = ["/images/og-cover.jpg"]
+
+[params.page.seo.publisher]
+name = "我们的故事"
+
+# 中英文混排自动加空格
+[params.pangu]
+enable = true
+selector = "article"
 
 [params.image]
 optimise = true
